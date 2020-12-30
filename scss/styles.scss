@@ -1,0 +1,382 @@
+$white: #ffffff;
+$purple: #834dfc;
+$green: #21c08b;
+
+@mixin flexbox {
+  align-items: center;
+  display: flex;
+}
+
+@mixin flex-column-center {
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin btn-forms {
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 50px;
+  color: $white;
+  cursor: pointer;
+  font-family: "Muli", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  letter-spacing: 1px;
+  margin: 10px 0px;
+}
+
+body {
+  margin: 0px;
+  font-family: "Muli", sans-serif;
+  background-color: $purple;
+}
+
+/* Estilos del header */
+.header {
+  @include flexbox;
+  background-color: $purple;
+  height: 80px;
+  justify-content: space-between;
+  width: 100%;
+  &__img {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 200px;
+  }
+  &__menu {
+    margin-right: 30px;
+    ul {
+      display: none;
+      list-style: none;
+      margin: 0px 0px 0px -14px;
+      padding: 0px;
+      position: absolute;
+      text-align: right;
+      width: 100px;
+    }
+    &:hover ul,
+    ul:hover {
+      display: block;
+    }
+    li {
+      margin: 10px 0px;
+      a {
+        color: $white;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+    &--profile {
+      @include flexbox;
+      cursor: pointer;
+      margin-right: 8px;
+      img {
+        margin-right: 8px;
+        width: 25px;
+      }
+      p {
+        color: $white;
+        margin: 0px;
+      }
+    }
+  }
+}
+
+/* Estilos del buscador */
+.main {
+  @include flexbox;
+  @include flex-column-center;
+  height: 300px;
+  &__title {
+    color: $white;
+    font-size: 20px;
+  }
+  &__search {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid $white;
+    border-radius: 50px;
+    color: $white;
+    font-family: "Muli", sans-serif;
+    font-size: 16px;
+    height: 50px;
+    outline: none;
+    padding: 0px 20px;
+    width: 70%;
+  }
+  ::placeholder {
+    color: $white;
+  }
+}
+
+.categories__title {
+  color: $white;
+  font-size: 16px;
+  padding-left: 30px;
+  position: absolute;
+  width: 100%;
+}
+
+/* Estilos del Carousel */
+.carousel {
+  // overflow: scroll;
+  padding: 30px;
+  position: relative;
+  width: 100%;
+  &__container {
+    margin: 70px 0px;
+    padding-bottom: 10px;
+    $white-space: nowrap;
+    &:hover .carousel-item {
+      opacity: 0.3;
+    }
+    &:hover .carousel-item:hover {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+  }
+}
+
+.carousel-item {
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+  height: 200px;
+  margin-right: 10px;
+  overflow: hidden;
+  position: relative;
+  transform-origin: center left;
+  transition: 450ms all;
+  width: 150px;
+  &__img {
+    height: 250px;
+    object-fit: cover;
+    width: 200px;
+  }
+  &__details {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    justify-content: flex-end;
+    left: 0;
+    opacity: 0;
+    padding: 10px 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 450ms opacity;
+    img {
+      height: 15px;
+    }
+    p {
+      margin: 0px;
+    }
+    &:hover {
+      color: $white;
+      opacity: 1;
+    }
+  }
+  &:hover ~ .carousel-item {
+    transform: translate3d(100px, 0, 0);
+  }
+}
+
+/* Estilos de la vista del Login */
+.login {
+  @include flexbox;
+  background: linear-gradient($purple, $green);
+  @include flex-column-center;
+  min-height: calc(100vh - 200px);
+  padding: 0px 30px;
+  &__container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid $white;
+    border-radius: 40px;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 500px;
+    padding: 20px 68px 40px;
+    width: 250px;
+    &--form {
+      display: flex;
+      flex-direction: column;
+      label {
+        font-size: 12px;
+      }
+    }
+    &--remember {
+      color: $white;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      a {
+        color: $white;
+        font-size: 12px;
+        margin-top: 5px;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+    &--social-media > div {
+      @include flexbox;
+      font-size: 12px;
+      margin-bottom: 10px;
+      > img {
+        margin-right: 10px;
+        width: 30px;
+      }
+    }
+    &--register {
+      font-size: 14px;
+      a {
+        color: $white;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.input-form {
+  background-color: transparent;
+  border-left: 0px;
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 2px solid $white;
+  font-family: "Muli", sans-serif;
+  font-size: 16px;
+  height: 50px;
+  margin-bottom: 20px;
+  padding: 0px 20px;
+  outline: none;
+}
+::placeholder {
+  color: $white;
+}
+
+.btn--login {
+  @include btn-forms;
+}
+
+/* Estilos de la vista del Registro */
+.register {
+  @include flexbox;
+  background: linear-gradient($purple, $green);
+  @include flex-column-center;
+  min-height: calc(100vh - 200px);
+  padding: 0px 30px;
+  &__container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid $white;
+    border-radius: 40px;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 500px;
+    padding: 20px 68px 40px;
+    width: 250px;
+    &--form {
+      display: flex;
+      flex-direction: column;
+    }
+    &--login a {
+      color: $white;
+      display: flex;
+      font-size: 14px;
+      justify-content: center;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.btn--register {
+  @include btn-forms;
+}
+
+.footer {
+  @include flexbox;
+  background-color: $green;
+  height: 100px;
+  width: 100%;
+  a {
+    color: $white;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Diseño Responsive */
+@media only screen and (max-width: 600px) {
+  .login__container {
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    width: 100%;
+  }
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* Error 404 Not Found*/
+.error {
+  @include flexbox;
+  background: linear-gradient($purple, $green);
+  @include flex-column-center;
+  min-height: 73vh;
+  width: 100%;
+  &__container--p {
+    color: $white;
+    font-family: "Muli", sans-serif;
+    font-size: 16px;
+  }
+}
+
+.animated {
+  animation-duration: 2.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@keyframes gif {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.gif {
+  animation-name: gif;
+  animation-duration: 1s;
+}
